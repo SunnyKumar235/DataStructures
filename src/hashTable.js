@@ -32,6 +32,15 @@ class HashTable {
         }
         return undefined;
     }
+    key(){
+        let keyArray = [];
+        for(var i =0;i<this.data.length;i++){
+            if(this.data[i]){
+                keyArray.push(this.data[i][0][0]);
+            }
+        }
+        return keyArray;
+    }
     
 }
 
@@ -39,3 +48,4 @@ let myhash = new HashTable(500);
 myhash.set("greapes",100);
 myhash.set("Apples",200);
 console.log(myhash.get("Apples"));
+console.log(myhash.key());
