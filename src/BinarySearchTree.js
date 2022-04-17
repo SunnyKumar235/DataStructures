@@ -36,34 +36,70 @@ class BinarySearchTree {
 
     }
     lookup(value) {
-        if(this.root === null){
+        if (this.root === null) {
             return null;
         }
         let currentNode = this.root;
-        while(true){
-            if(value <currentNode.value){
-                if(!currentNode.left){
-                    return null;
-                }
-                if(value === currentNode.value){
-                    return currentNode;
-                }
+        while (currentNode) {
+            if (value < currentNode.value) {
                 currentNode = currentNode.left;
-
-            }else {
-                if(!currentNode.right){
-                    return null;
-                }
-                if(value === currentNode.value){
-                    return currentNode;
-                }
-                currentNode = currentNode.right
+            } else if (value > currentNode.value) {
+                currentNode = currentNode.right;
             }
-
+            if (value === currentNode.value) {
+                return currentNode;
+            }
         }
+        return false;
+
+        // while(true){
+        //     if(value <currentNode.value){ 
+        //       if(value === currentNode.value){
+        //             return currentNode;
+        //         }
+        //         if(!currentNode.left){
+        //             return null;
+        //         }
+        //         currentNode = currentNode.left;
+
+        //     }else {
+        //       if(value === currentNode.value){
+        //             return currentNode;
+        //         }
+        //         if(!currentNode.right){
+        //             return null;
+        //         }
+        //         currentNode = currentNode.right
+        //     }
+
+        // }
 
     }
-    delete() {
+    remove() {
+        if(!this.root){
+            return null;
+        }
+        const currentNode = this.root;
+        const parentNode = null;
+        while (currentNode) {
+            if (value < currentNode.value) {
+                parentNode = currentNode;
+                currentNode = currentNode.left;
+            } else if (value > currentNode.value) {
+                parentNode = currentNode;
+                currentNode = currentNode.right;
+            }
+            if (value === currentNode.value) {
+                if(currentNode.right === null){
+                    if(parentNode ==null){
+                        this.root = currentNode.left;
+                    }
+                }
+                if(currentNode.value<parentNode.value){
+                    parentNode.left=currentNode.left;
+                }
+            }
+        }
 
     }
 }
@@ -79,6 +115,8 @@ BST.insert(170);
 //BST.insert();
 
 console.log(JSON.stringify(teaverse(BST.root)));
+console.log(BST.lookup(20));
+
 
 
 function teaverse(node) {
