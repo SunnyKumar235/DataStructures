@@ -75,33 +75,6 @@ class BinarySearchTree {
         // }
 
     }
-    remove() {
-        if(!this.root){
-            return null;
-        }
-        const currentNode = this.root;
-        const parentNode = null;
-        while (currentNode) {
-            if (value < currentNode.value) {
-                parentNode = currentNode;
-                currentNode = currentNode.left;
-            } else if (value > currentNode.value) {
-                parentNode = currentNode;
-                currentNode = currentNode.right;
-            }
-            if (value === currentNode.value) {
-                if(currentNode.right === null){
-                    if(parentNode ==null){
-                        this.root = currentNode.left;
-                    }
-                }
-                if(currentNode.value<parentNode.value){
-                    parentNode.left=currentNode.left;
-                }
-            }
-        }
-
-    }
 }
 
 const BST = new BinarySearchTree();
